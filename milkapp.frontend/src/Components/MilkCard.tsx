@@ -1,20 +1,10 @@
 import { useEffect, useState } from "react";
 import MilkInfo from "../Types/MilkInfo";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import Item from "@mui/material/Grid";
 
 function MilkCard() {
   const [productData, setProductData] = useState<MilkInfo[]>([]);
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [storage, setStorage] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,33 +17,63 @@ function MilkCard() {
 
   return (
     <>
-      {productData.map((p) => (
-        <Card sx={{ maxWidth: 345 }}>
-          <CardContent>
-            <CardMedia
-              component="img"
-              image="https://scontent-arn2-1.xx.fbcdn.net/v/t39.30808-6/308109550_456331879823052_8294891194759821237_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=FdDrLyQ96_4AX8Qb_IS&_nc_ht=scontent-arn2-1.xx&oh=00_AfBKRo4ExsSa8wAigeCYJgGooqyZwC-UiX9_5iM5Lq1vKQ&oe=63D80570"
-              alt="CardMedia Image Example"
-              height="small"
-              width="small"
-              title="CardMedia Image Example"
-            />
-            <Typography gutterBottom variant="h5" component="div">
-              {p.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {p.type}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {p.storage}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      ))}
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        mt={15}
+      >
+        <Grid
+          container
+          spacing={{ xs: 6, md: 3 }}
+          xs={10}
+          justifyItems="center"
+        >
+          {productData.map((p) => (
+            <Grid item xs={10} sm={4} md={4}>
+              <Item>
+                <Card>
+                  <CardContent>
+                    <CardMedia
+                      component="img"
+                      image="https://avatars.githubusercontent.com/u/795818?v=4"
+                      alt="Milkie"
+                      title="Milkie"
+                    />
+                    <Typography variant="h6" component="div" m={2}>
+                      {p.name}
+                    </Typography>
+                    <Grid container spacing={2}>
+                      <Grid item xs={10}>
+                        <Item>
+                          <Typography
+                            align="left"
+                            variant="body2"
+                            color="text.secondary"
+                          >
+                            {p.type}
+                          </Typography>
+                        </Item>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Item>
+                          <Typography
+                            align="right"
+                            variant="body2"
+                            color="text.secondary"
+                          >
+                            {p.storage}
+                          </Typography>
+                        </Item>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              </Item>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }
