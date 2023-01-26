@@ -1,12 +1,10 @@
 import React from 'react';
 import MilkCard from './Components/MilkCard';
-
+import MilkGrid from './Components/MilkGrid';
 
 function App() {
   return (
-    <div className="App">
-<MilkCard />
-    </div>
+<MilkGrid />
   );
 }
 
