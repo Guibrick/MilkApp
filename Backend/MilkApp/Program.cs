@@ -1,5 +1,10 @@
+
+using Backend.MilkApp.Data;
+using Backend.MilkApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,14 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MilkContext>(option =>
-    option.UseSqlServer("Server=localhost, 1433;Database=Milk;User Id=sa;Password=Stockholm-9876;trustServerCertificate=True;"));
-
+    option.UseSqlServer(builder.Configuration.GetConnectionString("MilkContext")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

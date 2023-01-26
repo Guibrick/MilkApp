@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Backend.MilkApp.Models;
-
-    public class MilkContext : DbContext
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+namespace Backend.MilkApp.Data;
+    public partial class MilkContext : DbContext
     {
         public MilkContext(DbContextOptions<MilkContext> options) : base(options)
-        { }
-
+        {
+        }
         public DbSet<Product> Product { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=Milk;User Id=sa;Password=Stockholm-9876;trustServerCertificate=True;");
+            modelBuilder.ApplyConfiguration(new ContextConfiguration());
         }
     }

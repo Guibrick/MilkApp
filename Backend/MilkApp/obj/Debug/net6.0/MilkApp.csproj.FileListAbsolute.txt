@@ -262,3 +262,4 @@ C:\Users\guibe\salt_projects\MilkApp\Backend\MilkApp\obj\Debug\net6.0\refint\Mil
 C:\Users\guibe\salt_projects\MilkApp\Backend\MilkApp\obj\Debug\net6.0\MilkApp.pdb
 C:\Users\guibe\salt_projects\MilkApp\Backend\MilkApp\obj\Debug\net6.0\MilkApp.genruntimeconfig.cache
 C:\Users\guibe\salt_projects\MilkApp\Backend\MilkApp\obj\Debug\net6.0\ref\MilkApp.dll
+C:\Users\guibe\salt_projects\MilkApp\Backend\MilkApp\bin\Debug\net6.0\Data\milk.json
